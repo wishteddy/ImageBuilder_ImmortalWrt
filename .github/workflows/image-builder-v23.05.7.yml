@@ -6,7 +6,7 @@ on:
 
     inputs:
       ROOTFS_PARTSIZE:
-        description: "Reconfigure the rootfs partition size, variable set in MB."
+        description: "自定义ROOTFS_PARTSIZE空间大小（MB）。"
         required: false
         default: "1024"
 
