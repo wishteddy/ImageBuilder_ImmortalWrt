@@ -1,4 +1,4 @@
-name: ImmortalWrt Image Builder (OpenWrt 24)
+name: ImmortalWrt Image Builder (ImmortalWrt_24.10.6)
 on:
   push:
     branches: [ "master" ]
@@ -9,8 +9,8 @@ env:
   UCI_CUSTOM_FILE: uci-custom
   PACKAGES_LIST_FILE: packages.list
   PACKAGES_FOLDER: packages
-  # ROOTFS_PARTSIZE: 512   # Reconfigure the rootfs partition size (for x86 build only), variable set in MB
-  DOWNLOAD_URL: https://downloads.immortalwrt.org/releases/24.10.0/targets/x86/64/immortalwrt-imagebuilder-24.10.0-x86-64.Linux-x86_64.tar.zst
+  ROOTFS_PARTSIZE: 512   # Reconfigure the rootfs partition size (for x86 build only), variable set in MB
+  DOWNLOAD_URL: https://downloads.immortalwrt.org/releases/24.10.6/targets/x86/64/immortalwrt-imagebuilder-24.10.6-x86-64.Linux-x86_64.tar.zst
   TZ: Asia/Shanghai
 
 jobs:
@@ -43,7 +43,7 @@ jobs:
         CONFIG_FILE="$ROOT_DIRECTORY/.config"
         # Disable iso and virtual disk image generation for x86
         sudo sed -i 's/^CONFIG_ISO_IMAGES=y/# CONFIG_ISO_IMAGES is not set/' $CONFIG_FILE
-        sudo sed -i 's/^CONFIG_QCOW2_IMAGES=y/# CONFIG_QCOW2_IMAGES is not set/' $CONFIG_FILE
+        # sudo sed -i 's/^CONFIG_QCOW2_IMAGES=y/# CONFIG_QCOW2_IMAGES is not set/' $CONFIG_FILE
         sudo sed -i 's/^CONFIG_VDI_IMAGES=y/# CONFIG_VDI_IMAGES is not set/' $CONFIG_FILE
         sudo sed -i 's/^CONFIG_VMDK_IMAGES=y/# CONFIG_VMDK_IMAGES is not set/' $CONFIG_FILE
         sudo sed -i 's/^CONFIG_VHDX_IMAGES=y/# CONFIG_VHDX_IMAGES is not set/' $CONFIG_FILE
