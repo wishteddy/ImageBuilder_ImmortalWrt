@@ -1,4 +1,4 @@
-name: ImmortalWrt Image Builder (ImmortalWrt_24.10.6)
+name: ImmortalWrt_ImageBuilder (ImmortalWrt_24.10.6)
 on:
   push:
     branches: [ "master" ]
