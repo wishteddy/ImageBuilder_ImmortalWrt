@@ -67,8 +67,13 @@ jobs:
         sudo cp $UCI_CUSTOM_FILE $ROOT_DIRECTORY/files/etc/uci-defaults
         # Copy packages list
         sudo cp $PACKAGES_LIST_FILE $ROOT_DIRECTORY/files/packages.list
-        # Copy ipk files
-        sudo cp $PACKAGES_FOLDER/*.apk $ROOT_DIRECTORY/packages
+        # Copy apk files (check if exists first)
+        if ls $PACKAGES_FOLDER/*.apk >/dev/null 2>&1; then
+          sudo cp $PACKAGES_FOLDER/*.apk $ROOT_DIRECTORY/packages
+          echo "Copied .apk files successfully."
+        else
+          echo "No .apk files found, skipping copy."
+        fi
 
     - name: Compile firmware
       run: |
