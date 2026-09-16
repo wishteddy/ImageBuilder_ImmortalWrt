@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   
     inputs:
-      ROOTFS_PARTSIZE:
+      ROOTFS_SIZE:
         description: "自定义ROOTFS_PARTSIZE空间大小（MB）。"
         required: false
         default: "1024"
@@ -15,7 +15,7 @@ env:
   UCI_CUSTOM_FILE: uci-custom
   PACKAGES_LIST_FILE: packages-v25.12.list
   PACKAGES_FOLDER: packages-v25.12
-#  ROOTFS_PARTSIZE: 512   # Reconfigure the rootfs partition size (for x86 build only), variable set in MB
+  ROOTFS_PARTSIZE: ${{ inputs.rootfs_size }}   # Reconfigure the rootfs partition size (for x86 build only), variable set in MB
   DOWNLOAD_URL: https://downloads.immortalwrt.org/releases/25.12.2/targets/x86/64/immortalwrt-imagebuilder-25.12.2-x86-64.Linux-x86_64.tar.zst
   TZ: Asia/Shanghai
 
