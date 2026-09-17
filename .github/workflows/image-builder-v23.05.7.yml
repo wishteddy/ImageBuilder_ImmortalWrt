@@ -11,12 +11,12 @@ on:
         default: "1024"
 
 env:
-  PROFILE: generic
+  PROFILE: cmcc_rax3000m
   UCI_CUSTOM_FILE: uci-custom
   PACKAGES_LIST_FILE: packages-v23.05.list
   PACKAGES_FOLDER: packages-v23.05
   #  ROOTFS_PARTSIZE: 512   # Reconfigure the rootfs partition size (for x86 build only), variable set in MB
-  DOWNLOAD_URL: https://downloads.immortalwrt.org/releases/23.05.7/targets/x86/64/immortalwrt-imagebuilder-23.05.7-x86-64.Linux-x86_64.tar.xz
+  DOWNLOAD_URL: https://downloads.immortalwrt.org/releases/23.05.7/targets/mediatek/filogic/immortalwrt-imagebuilder-23.05.7-mediatek-filogic.Linux-x86_64.tar.xz
   TZ: Asia/Shanghai
 
 jobs:
@@ -49,7 +49,7 @@ jobs:
         CONFIG_FILE="$ROOT_DIRECTORY/.config"
         # Disable iso and virtual disk image generation for x86
         sudo sed -i 's/^CONFIG_ISO_IMAGES=y/# CONFIG_ISO_IMAGES is not set/' $CONFIG_FILE
-        # sudo sed -i 's/^CONFIG_QCOW2_IMAGES=y/# CONFIG_QCOW2_IMAGES is not set/' $CONFIG_FILE
+        sudo sed -i 's/^CONFIG_QCOW2_IMAGES=y/# CONFIG_QCOW2_IMAGES is not set/' $CONFIG_FILE
         sudo sed -i 's/^CONFIG_VDI_IMAGES=y/# CONFIG_VDI_IMAGES is not set/' $CONFIG_FILE
         sudo sed -i 's/^CONFIG_VMDK_IMAGES=y/# CONFIG_VMDK_IMAGES is not set/' $CONFIG_FILE
         sudo sed -i 's/^CONFIG_VHDX_IMAGES=y/# CONFIG_VHDX_IMAGES is not set/' $CONFIG_FILE
